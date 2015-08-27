@@ -14,7 +14,8 @@ defmodule WW.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger, :httpoison]]
+    [applications: applications,
+     mod: { WW, [] }]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +28,16 @@ defmodule WW.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:aws, "~> 0.0.1"}]
+    [{:aws, "~> 0.0.1"},
+     {:cowboy, "~> 1.0.0"},
+     {:plug, "~> 1.0"},
+     {:earmark, "~> 0.1"}]
+  end
+
+  defp applications do
+    [:logger,
+     :httpoison,
+     :cowboy,
+     :plug]
   end
 end

@@ -1,0 +1,13 @@
+<h1> Edit <span id="header_page_id"></span> </h1>
+
+<form method="post" action="/wiki/update">
+  <input id="page_id" type="hidden" name="id" value="" />
+  <textarea id="page_body" name="body"></textarea>
+  <input type="submit" />
+</form>
+
+<script>
+  var pageId = window.location.pathname.split("/")[2];
+  header_page_id.textContent = pageId;
+  page_id.value = pageId;
+</script>
