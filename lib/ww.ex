@@ -1,0 +1,2 @@
+defmodule WW do
+end
