@@ -7,6 +7,7 @@
   "idna": {:hex, :idna, "1.0.2"},
   "plug": {:hex, :plug, "1.0.0"},
   "poison": {:hex, :poison, "1.4.0"},
+  "pot": {:git, "https://github.com/yuce/pot.git", "8e5f681d71d27e1ffbfd8b924d8e101e9a6db7e7", []},
   "ranch": {:hex, :ranch, "1.1.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},
   "timex": {:hex, :timex, "0.13.5"}}

@@ -22,3 +22,15 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :aws,
+  key: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  region: System.get_env("AWS_REGION") || "eu-west-1",
+  bucket: "wikiwords-test"
+
+config :auth,
+  password: System.get_env("AUTH_PASSWORD"),
+  cookie: System.get_env("AUTH_COOKIE")
+
+import_config "#{Mix.env}.exs"
