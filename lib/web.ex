@@ -31,6 +31,10 @@ defmodule Web do
     conn |> render_page(id)
   end
 
+  get "/wiki/:id/raw" do
+    conn |> render_raw_page(id)
+  end
+
   get "/wiki/:id/edit" do
     conn |> send_file(200, "priv/edit.html")
   end
@@ -67,8 +71,18 @@ defmodule Web do
     |> send_resp(200, page_body(id))
   end
 
+  defp render_raw_page(conn, id) do
+    conn
+    |> put_resp_content_type("text/plain")
+    |> send_resp(200, page_raw_body(id))
+  end
+
   def page_body(id) do
     Page.find(id).body
+  end
+
+  def page_raw_body(id) do
+    Page.find(id).raw_body
   end
 
   def post_params(conn) do

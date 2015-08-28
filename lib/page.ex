@@ -22,7 +22,17 @@ defmodule Page do
   end
 
   defp generate_html(body) do
-    Earmark.to_html(body)
+    body
+    |> replace_wikiwords_with_link
+    |> Earmark.to_html
+  end
+
+  defp replace_wikiwords_with_link(body) do
+    if String.match?(body, ~r/::stub::/) do
+      body
+    else
+      String.replace(body, ~r/\b([A-Z][a-z]+[A-Z][A-Za-z]*)\b/, "<a href='/wiki/\\1'>\\1</a>")
+    end
   end
 
   defp aws_client do
@@ -39,6 +49,6 @@ defmodule Page do
   end
 
   defp stub(id) do
-    "This page is a stub. You can edit this page [here](/wiki/#{id}/edit)"
+    "::stub:: This page is a stub. You can edit this page [here](/wiki/#{id}/edit)"
   end
 end
